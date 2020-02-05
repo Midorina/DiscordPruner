@@ -14,9 +14,7 @@ logging.basicConfig(level=logging.INFO)
 @bot.command()
 async def prune(ctx):
     if ctx.author.id == config['owner_id']:
-        members = ctx.guild.members
-
-        for member in members:
+        for member in ctx.guild.members:
             if not member.bot and member.id not in config['whitelisted_member_ids']:
                 msg = await ctx.send(f"Kicking {str(member)}...")
                 counter = 0
